@@ -6,8 +6,8 @@ import java.util.*;
 
 public class CalculatorService {
 
-    private static final List<Character> logicWord = Arrays.asList('L', 'O', 'G', 'I', 'C');
-    private static final List<Character> specialChars = Arrays.asList(' ','!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',',
+    private final List<Character> LOGIC_WORD = Arrays.asList('L', 'O', 'G', 'I', 'C');
+    private final List<Character> SPECIAL_CHARS = Arrays.asList(' ','!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',',
             '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~');
 
     public List<SingleWordData> createSingleWordData(String input){
@@ -19,21 +19,26 @@ public class CalculatorService {
             int matchingOccurrencesNumber = 0;
 
             for (int i = 0; i < word.length(); i++) {
-                if (logicWord.contains(word.charAt(i))) {
+                if (validate(LOGIC_WORD, word.charAt(i))) {
                     matchingOccurrencesNumber++;
                     tempCharContained.add(word.charAt(i));
                 }
             }
 
-            singleWords.add(new SingleWordData.Builder().matchingChars(tempCharContained).lengthOfWords(word.length()).matchingOccurrencesNumber(matchingOccurrencesNumber).build());
+            singleWords.add(new SingleWordData.Builder()
+                    .matchingChars(tempCharContained)
+                    .lengthOfWords(word.length())
+                    .matchingOccurrencesNumber(matchingOccurrencesNumber)
+                    .build());
         });
         return singleWords;
     }
 
+
     public int checkNumberOfLettersInGivenWord(String word){
         int numberOfOurWordLettersInInput = 0;
         for (int i = 0; i < word.length(); i++) {
-            if (logicWord.contains(word.charAt(i))) {
+            if (validate(LOGIC_WORD, word.charAt(i))) {
                 numberOfOurWordLettersInInput++;
             }
         }
@@ -43,10 +48,14 @@ public class CalculatorService {
     public  int checkNumberOfLettersWithoutSpecialChar(String word){
         int numberOfLettersInInput = 0;
         for (int i = 0; i<word.length(); i++){
-            if (!specialChars.contains(word.charAt(i))){
+            if (! validate(SPECIAL_CHARS, word.charAt(i))){
                 numberOfLettersInInput++;
             }
         }
         return numberOfLettersInInput;
+    }
+
+    private boolean validate(List<Character> list, Character character){
+        return list.contains(character);
     }
 }
