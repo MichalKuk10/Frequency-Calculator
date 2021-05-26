@@ -1,4 +1,4 @@
-#Frequency Calculator
+Frequency Calculator
 
 This application is resposible for calculating occurence of the given sentece based on the assumptions given in the exercise. 
 
