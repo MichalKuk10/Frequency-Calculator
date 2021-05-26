@@ -35,4 +35,14 @@ public class CalculatorServiceTests {
         //then
         Assertions.assertEquals(1, expectedNumber);
     }
+
+    @Test
+    public void should_check_if_correctly_counts_number_of_letters_without_special_chars() {
+        //given
+        //when
+        int expectedNumber = service.checkNumberOfLettersWithoutSpecialChar(word.toUpperCase());
+        //then
+        Assertions.assertEquals(5, expectedNumber);
+    }
+
 }
