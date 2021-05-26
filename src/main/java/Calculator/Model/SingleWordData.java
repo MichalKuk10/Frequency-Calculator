@@ -2,7 +2,7 @@ package Calculator.Model;
 
 import java.util.Set;
 
-public class SingleWordData {
+public class SingleWordData implements Comparable<SingleWordData> {
 
     private final Set<Character> matchingChars;
     private final int lengthOfWord;
@@ -48,5 +48,19 @@ public class SingleWordData {
         public SingleWordData build(){
             return new SingleWordData(this);
         }
+    }
+
+    @Override
+    public int compareTo(SingleWordData o) {
+        return this.lengthOfWord - o.getLengthOfWord();
+    }
+
+    @Override
+    public String toString() {
+        return "SingleWordInput{" +
+                "matchingChars=" + matchingChars +
+                ", lengthOfWord=" + lengthOfWord +
+                ", matchingOccurrencesNumber=" + matchingOccurrencesNumber +
+                '}';
     }
 }
