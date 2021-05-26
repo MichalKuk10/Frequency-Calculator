@@ -10,23 +10,23 @@ public class CalculatorService {
     private static final List<Character> specialChars = Arrays.asList(' ','!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',',
             '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~');
 
-    public List<SingleWordData> createSingleWordInput(String input){
+    public List<SingleWordData> createSingleWordData(String input){
         String[] inputSplitted = input.toUpperCase().split(" ");
         List<SingleWordData> singleWords =  new ArrayList<>();
 
-        for (String word : inputSplitted){
+        Arrays.stream(inputSplitted).forEach(word -> {
             Set<Character> tempCharContained = new HashSet<>();
             int matchingOccurrencesNumber = 0;
 
-            for (int i=0; i < word.length(); i++){
-                if (logicWord.contains(word.charAt(i))){
+            for (int i = 0; i < word.length(); i++) {
+                if (logicWord.contains(word.charAt(i))) {
                     matchingOccurrencesNumber++;
                     tempCharContained.add(word.charAt(i));
                 }
             }
 
             singleWords.add(new SingleWordData.Builder().matchingChars(tempCharContained).lengthOfWords(word.length()).matchingOccurrencesNumber(matchingOccurrencesNumber).build());
-        }
+        });
         return singleWords;
     }
 
