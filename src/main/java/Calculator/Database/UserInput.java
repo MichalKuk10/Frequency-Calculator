@@ -9,5 +9,6 @@ public class UserInput implements InputReader {
         Scanner scanner = new Scanner(new InputStreamReader(System.in));
         String input = scanner.nextLine();
         return input;
+
     }
 }
