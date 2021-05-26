@@ -1,7 +1,5 @@
 package Calculator.Controller;
 
-import Calculator.Database.InputReader;
-import Calculator.Database.UserInput;
 import Calculator.Model.SingleWordData;
 import Calculator.Service.CalculatorService;
 import Calculator.View.CalculatorView;
@@ -12,8 +10,8 @@ import java.util.List;
 
 public class CalculatorController {
     private final CalculatorService calculatorService = new CalculatorService();
-    private final InputReader inputReader = new UserInput();
     private final CalculatorView calculatorView = new CalculatorView();
+
 
 
     public void countOccurrences(String input){
