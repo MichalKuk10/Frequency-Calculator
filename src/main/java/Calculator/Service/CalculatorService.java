@@ -1,7 +1,8 @@
 package Calculator.Service;
 
-import java.util.Arrays;
-import java.util.List;
+import Calculator.Model.SingleWordData;
+
+import java.util.*;
 
 public class CalculatorService {
 
@@ -9,7 +10,25 @@ public class CalculatorService {
     private static final List<Character> specialChars = Arrays.asList(' ','!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',',
             '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~');
 
+    public List<SingleWordData> createSingleWordInput(String input){
+        String[] inputSplitted = input.toUpperCase().split(" ");
+        List<SingleWordData> singleWords =  new ArrayList<>();
 
+        for (String word : inputSplitted){
+            Set<Character> tempCharContained = new HashSet<>();
+            int matchingOccurrencesNumber = 0;
+
+            for (int i=0; i < word.length(); i++){
+                if (logicWord.contains(word.charAt(i))){
+                    matchingOccurrencesNumber++;
+                    tempCharContained.add(word.charAt(i));
+                }
+            }
+
+            singleWords.add(new SingleWordData.Builder().matchingChars(tempCharContained).lengthOfWords(word.length()).matchingOccurrencesNumber(matchingOccurrencesNumber).build());
+        }
+        return singleWords;
+    }
 
     public int checkNumberOfLettersInGivenWord(String word){
         int numberOfOurWordLettersInInput = 0;
