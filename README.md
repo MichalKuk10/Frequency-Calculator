@@ -9,3 +9,5 @@ It's ready for extensions, currently it works with user input.
 Application has been tested based with Junit.
 
 More details below:
+
+![alt text](https://user-images.githubusercontent.com/57062670/119734809-c9278f80-be7b-11eb-93fb-181f6f8013f7.png)
