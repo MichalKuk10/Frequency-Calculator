@@ -20,7 +20,7 @@ public class CalculatorController {
         String inputToUpperCase = input.toUpperCase();
         int numberOfLettersInGivenWord = calculatorService.checkNumberOfLettersInGivenWord(inputToUpperCase);
         int occurrencesWithoutSpecialChar = calculatorService.checkNumberOfLettersWithoutSpecialChar(inputToUpperCase);
-        List<SingleWordData> singleWordInput = calculatorService.createSingleWordInput(inputToUpperCase);
+        List<SingleWordData> singleWordInput = calculatorService.createSingleWordData(inputToUpperCase);
 
         Collections.sort(singleWordInput);
 
