@@ -1,10 +1,9 @@
-package java;
+
 
 import Calculator.Model.SingleWordData;
 import Calculator.Service.CalculatorService;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,10 +15,10 @@ public class CalculatorServiceTests {
     public void should_check_if_creates_object_with_correct_values(){
         //given
         CalculatorService service = new CalculatorService();
-        String word = "House";
+        String word = "House!!!";
         Set<Character> tempCharContained = new HashSet<>();
         tempCharContained.add('O');
-        SingleWordData singleWordInput = new SingleWordData.Builder().matchingChars(tempCharContained).lengthOfWords(5).matchingOccurrencesNumber(1).build();
+        SingleWordData singleWordInput = new SingleWordData.Builder().matchingChars(tempCharContained).lengthOfWords(8).matchingOccurrencesNumber(1).build();
 
         //when
         List<SingleWordData> accualResult = service.createSingleWordInput(word);
